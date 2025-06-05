@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "9ba175d1-9dbd-4c71-a925-508ce10f98a3",
 		"name": "ekumen-bank",
-		"description": "A postman collection to consume an backend application with microservices archituecture.\n\nEnvironment variables\n\nntt-data-challenge-accounts-servername: {{ntt-data-challenge-accounts-servername}}\n\nntt-data-challenge-clients-servername: {{ntt-data-challenge-clients-servername}}\n\nntt-data-challenge-cloud-gateway-servername: {{ntt-data-challenge-cloud-gateway-servername}}",
+		"description": "A postman collection to consume an backend application with microservices architecture.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12442172"
 	},
