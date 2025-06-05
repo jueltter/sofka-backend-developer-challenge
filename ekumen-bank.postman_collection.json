@@ -1,0 +1,2146 @@
+{
+	"info": {
+		"_postman_id": "9ba175d1-9dbd-4c71-a925-508ce10f98a3",
+		"name": "ekumen-bank",
+		"description": "A postman collection to consume an backend application with microservices archituecture.\n\nEnvironment variables\n\nntt-data-challenge-accounts-servername: {{ntt-data-challenge-accounts-servername}}\n\nntt-data-challenge-clients-servername: {{ntt-data-challenge-clients-servername}}\n\nntt-data-challenge-cloud-gateway-servername: {{ntt-data-challenge-cloud-gateway-servername}}",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12442172"
+	},
+	"item": [
+		{
+			"name": "01 - clients",
+			"item": [
+				{
+					"name": "api",
+					"item": [
+						{
+							"name": "clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes"
+									],
+									"query": [
+										{
+											"key": "cliente-id",
+											"value": "c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const randomUUID = crypto.randomUUID();\r",
+											"pm.variables.set(\"randomUUID\", randomUUID);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"{{randomUUID}}\",\r\n    \"clienteId\": \"{{randomUUID}}\",\r\n    \"nombre\": \"Stalin Amagua\",\r\n    \"genero\": \"MALE\",\r\n    \"fechaNacimiento\": \"1985-06-15\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes <minimal data>",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const randomUUID = crypto.randomUUID();\r",
+											"pm.variables.set(\"randomUUID\", randomUUID);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"{{randomUUID}}\",\r\n    \"clienteId\": \"{{randomUUID}}\",\r\n    \"nombre\": \"Stalin Amagua\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{id} <minimal data>",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"86d2e411-e4cd-465e-bce6-35bf1f90368a\",\r\n    \"clienteId\": \"86d2e411-e4cd-465e-bce6-35bf1f90368a\",\r\n    \"nombre\": \"Ender WigginZ\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes/:id",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{id}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"estado\": \"FALSE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes/:id",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{id}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-clients-servername}}/api/clientes/:id",
+									"host": [
+										"{{ekumen-bank-clients-servername}}"
+									],
+									"path": [
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "22"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "The folder contains requests for the clients microservice that directly access it."
+		},
+		{
+			"name": "02 - accounts",
+			"item": [
+				{
+					"name": "api",
+					"item": [
+						{
+							"name": "cuentas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/cuentas",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const randomUUID = crypto.randomUUID();\r",
+											"pm.variables.set(\"randomUUID\", randomUUID);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"{{randomUUID}}\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1500.50,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Paul Atreides\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/cuentas",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{id}",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"087d432a-61f7-4181-a72e-c16330d0ca5b\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1400.50,\r\n    \"estado\": \"FALSE\",\r\n    \"nombreCliente\": \"Paul Atreides\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/cuentas/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{id}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"estado\": \"FALSE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/cuentas/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{id}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/cuentas/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/movimientos",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tipoMovimiento\": \"RETIRO\",\r\n    \"valor\": \"-15\",\r\n    \"numeroCuenta\": \"1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/movimientos",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos/{id}",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tipoMovimiento\": \"DEPOSITO\",\r\n    \"valor\": \"30\",\r\n    \"numeroCuenta\": \"1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/movimientos/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"movimientos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos/{id}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"valor\": \"-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/movimientos/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"movimientos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos/{id}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/movimientos/:id",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"movimientos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reportes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-bank-accounts-servername}}/api/reportes?cliente-id=c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f&fecha=2025-01-01,2025-12-31",
+									"host": [
+										"{{ekumen-bank-accounts-servername}}"
+									],
+									"path": [
+										"api",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "cliente-id",
+											"value": "c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f"
+										},
+										{
+											"key": "fecha",
+											"value": "2025-01-01,2025-12-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "The folder contains requests for the accounts microservice that directly access it."
+		},
+		{
+			"name": "03 - cloud-gateway",
+			"item": [
+				{
+					"name": "clients",
+					"item": [
+						{
+							"name": "api",
+							"item": [
+								{
+									"name": "clientes",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes"
+											],
+											"query": [
+												{
+													"key": "nombre",
+													"value": "Paul Atreides",
+													"disabled": true
+												},
+												{
+													"key": "cliente-id",
+													"value": "c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clientes",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomUUID = crypto.randomUUID();\r",
+													"pm.variables.set(\"randomUUID\", randomUUID);"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"identificacion\": \"{{randomUUID}}\",\r\n    \"clienteId\": \"{{randomUUID}}\",\r\n    \"nombre\": \"Stalin Amagua\",\r\n    \"genero\": \"MALE\",\r\n    \"fechaNacimiento\": \"1985-06-15\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clientes <minimal data>",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomUUID = crypto.randomUUID();\r",
+													"pm.variables.set(\"randomUUID\", randomUUID);"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"identificacion\": \"{{randomUUID}}\",\r\n    \"clienteId\": \"{{randomUUID}}\",\r\n    \"nombre\": \"Stalin Amagua\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clientes <minimal data>",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"identificacion\": \"fff7d651-6047-4832-8766-9bd71a05176a\",\r\n    \"clienteId\": \"fff7d651-6047-4832-8766-9bd71a05176a\",\r\n    \"nombre\": \"Stalin Amagua\",\r\n    \"direccion\": \"Battle School\",\r\n    \"telefono\": \"555-8765\",\r\n    \"clave\": 1234,\r\n    \"estado\": \"TRUE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "24"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clientes",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"estado\": \"FALSE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "24"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "clientes",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-clients",
+												"api",
+												"clientes",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "24"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"description": "The folder contains requests for the clients microservice accessed through the API Gateway."
+				},
+				{
+					"name": "accounts",
+					"item": [
+						{
+							"name": "api",
+							"item": [
+								{
+									"name": "cuentas",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"cuentas"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "cuentas",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomUUID = crypto.randomUUID();\r",
+													"pm.variables.set(\"randomUUID\", randomUUID);"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"numeroCuenta\": \"{{randomUUID}}\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1500.50,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Paul Atreides\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"cuentas"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "cuentas/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"numeroCuenta\": \"a8244506-39cb-4352-88d2-07f5fad2666f\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1300.50,\r\n    \"estado\": \"FALSE\",\r\n    \"nombreCliente\": \"Paul Atreides\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"cuentas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "cuentas/{id}",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"estado\": \"TRUE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"cuentas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "cuentas/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"cuentas",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "movimientos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"movimientos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "movimientos",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tipoMovimiento\": \"RETIRO\",\r\n    \"valor\": \"-15\",\r\n    \"numeroCuenta\": \"1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"movimientos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "movimientos/{id}",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tipoMovimiento\": \"DEPOSITO\",\r\n    \"valor\": \"10\",\r\n    \"numeroCuenta\": \"1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"movimientos",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "movimientos/{id}",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"valor\": \"15\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"movimientos",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "movimientos/{id}",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos/:id",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"movimientos",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "reportes",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/reportes?cliente-id=c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f&fecha=2025-01-01,2025-12-31",
+											"host": [
+												"{{ekumen-cloud-gateway-servername}}"
+											],
+											"path": [
+												"ekumen-bank-accounts",
+												"api",
+												"reportes"
+											],
+											"query": [
+												{
+													"key": "cliente-id",
+													"value": "c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f"
+												},
+												{
+													"key": "fecha",
+													"value": "2025-01-01,2025-12-31"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"description": "The folder contains requests for the accounts microservice accessed through the API Gateway."
+				}
+			],
+			"description": "The folder contains requests for the clients and accounts microservices accessed through the API Gateway.\n\nEureka\n\n[http://localhost:8761/](http://localhost:8761/)\n\nCloud Gateway\n\n[http://localhost:8762/actuator/gateway/routes](http://localhost:8762/actuator/gateway/routes)"
+		},
+		{
+			"name": "04 - use-cases",
+			"item": [
+				{
+					"name": "clients",
+					"item": [
+						{
+							"name": "clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes"
+									],
+									"query": [
+										{
+											"key": "cliente-id",
+											"value": "c7e1a2b0-2e6a-4b7a-9c1e-1f2b3c4d5e6f",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes <jose-lema>",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generateUUID() {\r",
+											"  let dt = new Date().getTime();\r",
+											"  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\r",
+											"    const r = (dt + Math.random() * 16) % 16 | 0;\r",
+											"    dt = Math.floor(dt / 16);\r",
+											"    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);\r",
+											"  });\r",
+											"  return uuid;\r",
+											"}\r",
+											"\r",
+											"console.log(eval(pm.globals.get('generateUUID')));\r",
+											"pm.variables.set('random-uuid', generateUUID());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('jose-lema-id', bodyAsObject.data.id);\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"{{random-uuid}}\",\r\n    \"clienteId\": \"{{random-uuid}}\",\r\n    \"nombre\": \"Jose Lema\",\r\n    \"direccion\": \"Otavalo sn y principal\",\r\n    \"telefono\": \"098254785\",\r\n    \"clave\": \"1234\",\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{jose-lema-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('jose-lema-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{jose-lema-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes <marianela-montalvo>",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generateUUID() {\r",
+											"  let dt = new Date().getTime();\r",
+											"  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\r",
+											"    const r = (dt + Math.random() * 16) % 16 | 0;\r",
+											"    dt = Math.floor(dt / 16);\r",
+											"    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);\r",
+											"  });\r",
+											"  return uuid;\r",
+											"}\r",
+											"\r",
+											"console.log(eval(pm.globals.get('generateUUID')));\r",
+											"pm.variables.set('random-uuid', generateUUID());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('marianela-montalvo-id', bodyAsObject.data.id);\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"{{random-uuid}}\",\r\n    \"clienteId\": \"{{random-uuid}}\",\r\n    \"nombre\": \"Marianela Montalvo\",\r\n    \"direccion\": \"Amazonas y NNUU\",\r\n    \"telefono\": \"097548965\",\r\n    \"clave\": \"5678\",\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{marianela-montalvo-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('marianela-montalvo-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{marianela-montalvo-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes <juan-osorio>",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"function generateUUID() {\r",
+											"  let dt = new Date().getTime();\r",
+											"  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\r",
+											"    const r = (dt + Math.random() * 16) % 16 | 0;\r",
+											"    dt = Math.floor(dt / 16);\r",
+											"    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);\r",
+											"  });\r",
+											"  return uuid;\r",
+											"}\r",
+											"\r",
+											"console.log(eval(pm.globals.get('generateUUID')));\r",
+											"pm.variables.set('random-uuid', generateUUID());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('juan-osorio-id', bodyAsObject.data.id);\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"identificacion\": \"{{random-uuid}}\",\r\n    \"clienteId\": \"{{random-uuid}}\",\r\n    \"nombre\": \"Juan Osorio\",\r\n    \"direccion\": \"13 junio y Equinoccial\",\r\n    \"telefono\": \"098874587\",\r\n    \"clave\": \"1245\",\r\n    \"estado\": \"TRUE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clientes/{juan-osorio-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('juan-osorio-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-clients/api/clientes/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-clients",
+										"api",
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{juan-osorio-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "accounts",
+					"item": [
+						{
+							"name": "cuentas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas <jose-lema-478758>",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('478758-id', bodyAsObject.data.id);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"478758\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"saldoInicial\": 2000,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Jose Lema\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{478758-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('478758-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{478758-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas <marianela-montalvo-225487>",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('225487-id', bodyAsObject.data.id);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"225487\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 100,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Marianela Montalvo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{225487-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('225487-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{225487-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas <juan-osorio-495878>",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('495878-id', bodyAsObject.data.id);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"495878\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"saldoInicial\": 0,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Juan Osorio\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{495878-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('495878-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{495878-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas <marianela-montalvo-496825>",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('496825-id', bodyAsObject.data.id);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"496825\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"saldoInicial\": 540,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Marianela Montalvo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{496825-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('496825-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{496825-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas <jose-lema-585545>",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let bodyAsObject = pm.response.json();\r",
+											"if (bodyAsObject.data) {\r",
+											"    pm.environment.set('585545-id', bodyAsObject.data.id);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"585545\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldoInicial\": 1000,\r\n    \"estado\": \"TRUE\",\r\n    \"nombreCliente\": \"Jose Lema\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cuentas/{585545-id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.json().status === 'success') {\r",
+											"    pm.environment.unset('585545-id');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/cuentas/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"cuentas",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{585545-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "account-movements",
+					"item": [
+						{
+							"name": "movimientos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tipoMovimiento\": \"RETIRO\",\r\n    \"valor\": -1000,\r\n    \"numeroCuenta\": \"585545\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"movimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "movimientos/{id}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/movimientos/:id",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"movimientos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "reports",
+					"item": [
+						{
+							"name": "reportes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ekumen-cloud-gateway-servername}}/ekumen-bank-accounts/api/reportes?cliente-id=12b669c4-b1e1-4ab7-95bf-3ff21ec471df&fecha=2025-01-01,2025-12-31",
+									"host": [
+										"{{ekumen-cloud-gateway-servername}}"
+									],
+									"path": [
+										"ekumen-bank-accounts",
+										"api",
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "cliente-id",
+											"value": "12b669c4-b1e1-4ab7-95bf-3ff21ec471df"
+										},
+										{
+											"key": "fecha",
+											"value": "2025-01-01,2025-12-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
