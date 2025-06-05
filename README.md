@@ -16,8 +16,9 @@ The solution consists of four Spring Boot projects:
 - `docker-compose.yml`: Docker Compose file.
 
 ## Prerequisites
-1. Git
-2. Docker | Docker Desktop
+1. Operating systems: Microsoft Windows | macOs, because "host.docker.internal" is used to access the host from the containers
+2. Git
+3. Docker | Docker Desktop
 
 ## Execution
 ```bash
@@ -27,7 +28,7 @@ git clone https://github.com/jueltter/sofka-backend-developer-challenge.git
 cd ./sofka-backend-developer-challenge
 # Checkout the master branch
 git checkout master
-# <optional> Initialize submodules
+# Initialize submodules to download subprojects files
 git submodule update --init --recursive
 # Run Docker Compose
 docker-compose up
