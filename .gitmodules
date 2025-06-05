@@ -1,0 +1,15 @@
+[submodule "ekumen-eureka-server"]
+	path = ekumen-eureka-server
+	url = https://github.com/jueltter/ekumen-eureka-server.git
+[submodule "ekumen-cloud-gateway"]
+	path = ekumen-cloud-gateway
+	url = https://github.com/jueltter/ekumen-cloud-gateway.git
+[submodule "ekumen-bank-data"]
+	path = ekumen-bank-data
+	url = https://github.com/jueltter/ekumen-bank-data.git
+[submodule "ekumen-bank-clients"]
+	path = ekumen-bank-clients
+	url = https://github.com/jueltter/ekumen-bank-clients.git
+[submodule "ekumen-bank-accounts"]
+	path = ekumen-bank-accounts
+	url = https://github.com/jueltter/ekumen-bank-accounts.git
